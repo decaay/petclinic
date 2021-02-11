@@ -1,5 +1,6 @@
-FROM java:8
-VOLUME /tmp
-ADD target/spring-petclinic-2.3.0.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+FROM ruby:latest
+WORKDIR /usr/src/app/
+RUN bundle install
+ADD . /usr/src/app/
+EXPOSE 3333
+CMD ["ruby", "/usr/src/app/helloworld.rb"]
